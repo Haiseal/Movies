@@ -4,7 +4,11 @@ import NavBar from "./components/NavBar";
 import Movies from "./components/Movies";
 import Favorites from "./components/Favorites";
 import Pagination from "./components/Pagination";
+import Login from "./components/Login";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import WatchPage from "./components/WatchPage";
 
 function App() {
   return (
@@ -24,6 +28,15 @@ function App() {
           ></Route>
           <Route path="/fav" element={
             <Favorites></Favorites>
+          }></Route>
+          <Route path="/login" element={
+            <Login></Login>
+          }></Route>
+          <Route path="/signUp" element={
+            <SignUp></SignUp>
+          }></Route>
+          <Route path="/watchPage" element={
+            <WatchPage></WatchPage>
           }></Route>
         </Routes>
       </BrowserRouter>
