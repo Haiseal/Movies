@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import WatchPage from "./components/WatchPage";
+import AdminPage from "./components/AdminPage";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           }></Route>
           <Route path="/watchPage" element={
             <WatchPage></WatchPage>
+          }></Route>
+          <Route path="/adminPage" element={
+            <AdminPage></AdminPage>
           }></Route>
         </Routes>
       </BrowserRouter>
