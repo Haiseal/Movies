@@ -1,50 +1,30 @@
-import "./App.css";
-import Banner from "./components/Banner";
-import NavBar from "./components/NavBar";
-import Movies from "./components/Movies";
-import Favorites from "./components/Favorites";
-import Pagination from "./components/Pagination";
-import Login from "./components/Login";
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SignUp from "./components/SignUp";
-import WatchPage from "./components/WatchPage";
-import AdminPage from "./components/AdminPage";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import Movies from './components/Movies';
+import WatchPage from './components/WatchPage';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import AddAdmin from './components/AddAdmin';
+import AdminPage from './components/AdminPage';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <NavBar></NavBar>
+    <Router>
+      <div>
+        <NavBar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Banner></Banner>
-                <Movies></Movies>
-                <Pagination></Pagination>
-              </>
-            }
-          ></Route>
-          <Route path="/fav" element={
-            <Favorites></Favorites>
-          }></Route>
-          <Route path="/login" element={
-            <Login></Login>
-          }></Route>
-          <Route path="/signUp" element={
-            <SignUp></SignUp>
-          }></Route>
-          <Route path="/watchPage" element={
-            <WatchPage></WatchPage>
-          }></Route>
-          <Route path="/adminPage" element={
-            <AdminPage></AdminPage>
-          }></Route>
+          <Route path="/" element={<Movies />} />
+          <Route path="/watchPage" element={<WatchPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/addAdmin" element={<AddAdmin />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
-      </BrowserRouter>
-    </>
+      </div>
+    </Router>
   );
 }
 
