@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import AddAdmin from './components/AddAdmin';
 import AdminPage from './components/AdminPage';
 import Favorites from './components/Favorites';
+import AdminSidebar from './components/admin/AdminSdebar';
 
 function App() {
   return (
@@ -15,12 +16,13 @@ function App() {
       <div>
         <NavBar />
         <Routes>
+          <Route path='/admin' element={<AdminSidebar/>}/>
           <Route path="/" element={<Movies />} />
           <Route path="/watchPage" element={<WatchPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/addAdmin" element={<AddAdmin />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </div>
