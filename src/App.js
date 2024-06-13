@@ -9,6 +9,7 @@ import AddAdmin from './components/AddAdmin';
 import AdminPage from './components/AdminPage';
 import Favorites from './components/Favorites';
 import AdminSidebar from './components/admin/AdminSdebar';
+import MovieDetail from './components/MovieDetail';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/addAdmin" element={<AddAdmin />} />
           <Route path="/adminPage" element={<AdminPage />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path='/detail' element={<MovieDetail/>}/>
         </Routes>
       </div>
     </Router>
