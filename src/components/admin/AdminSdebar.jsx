@@ -77,7 +77,7 @@ function AdminSidebar() {
 
   return (
     <div className="flex">
-      <div className="h-screen w-64 border-2 rounded-xl border-blue-400 w-full text-white">
+      <div className="h-screen border-2 rounded-xl border-blue-400 text-white">
         {/*  */}
         <div className="p-4">
           <h1 className="text-2xl font-bold text-blue-600 ">Admin Dashboard</h1>
