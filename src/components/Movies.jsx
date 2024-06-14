@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { Link } from "react-router-dom";
 function Movies() {
   const [movies, setMovies] = useState([]);
 
@@ -40,6 +40,8 @@ function Movies() {
               <td className="border border-gray-200 px-4 py-2 flex items-center">
                 <div className="w-12 h-16 bg-gray-200 mr-4"></div> {/* Placeholder image */}
                 <div>{movie.titla_movive}</div>
+                <Link to="/detail"></Link>
+                {/* đây ông sửa lại để đến detail nha */}
               </td>
               <td className="border border-gray-200 px-4 py-2">{movie.year}</td>
               <td className="border border-gray-200 px-4 py-2">{movie.list_episodes}</td>
