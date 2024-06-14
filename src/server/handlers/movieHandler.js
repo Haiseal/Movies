@@ -75,5 +75,23 @@ const deleteMovie = (req, res) => {
   });
 };
 
+// Get movies by genre
+const getMoviesByGenre = (req, res) => {
+  const { genreId } = req.params;
+  const query = `
+    SELECT m.*
+    FROM movies m
+    JOIN movie_genres mg ON m.id = mg.movie_id
+    WHERE mg.gener_id = ?
+  `;
+  db.query(query, [genreId], (err, results) => {
+    if (err) {
+      console.error('Error fetching movies by genre:', err);
+      res.status(500).json({ error: 'Failed to fetch movies by genre' });
+      return;
+    }
+    res.json(results);
+  });
+};
 
-module.exports = { getMovies, getMovieById, addMovie, updateMovie, deleteMovie };
+module.exports = { getMovies, getMovieById, addMovie, updateMovie, deleteMovie, getMoviesByGenre };

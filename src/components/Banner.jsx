@@ -18,7 +18,7 @@ function Banner() {
       bg-gray-900 p-4
       bg-opacity-60 
       text-center w-full font-bold
-      '>Ám Kịch</div>
+      '>Project Movie Website</div>
     </div>
 
   )

@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios here
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './contexts/AuthContext'; // Import useAuth hook for authentication
 
 function Login() {
+  const { login } = useAuth(); // Destructure login function from useAuth hook
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
-
-    // Configure base URL for Axios
-    axios.defaults.baseURL = 'http://localhost:5000'; // Assuming your backend server is running on port 5000
-
     try {
-      const response = await axios.post('/login', { username, password });
-      console.log(response.data); // Handle success response
+      await login(username, password); // Use login function from useAuth with username and password
+      navigate('/'); // Redirect to home page after successful login
     } catch (error) {
-      console.error('Error logging in:', error); // Handle error
+      console.error('Error logging in:', error);
+      if (error.response && error.response.status === 401) {
+        setError('Invalid username or password'); // Handle invalid credentials
+      } else {
+        setError('Failed to log in. Please try again later.'); // Handle network or server errors
+      }
     }
   };
+
   return (
     <div className='flex justify-center items-center h-screen bg-indigo-600'>
       <div className='w-96 p-6 shadow-lg bg-white rounded-md'>
         <h1 className='text-3xl block text-center'>Login</h1>
         <hr className='mt-3' />
+
+        {error && <p className='text-red-500 text-sm text-center'>{error}</p>}
 
         <div className='mt-3'>
           <label htmlFor="username" className='block text-base mb-2'>Username</label>

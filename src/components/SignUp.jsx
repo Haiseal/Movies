@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Import axios here
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [error, setError] = useState('');
 
   const handleSignUp = async () => {
-
     // Configure base URL for Axios
     axios.defaults.baseURL = 'http://localhost:5000'; // Assuming your backend server is running on port 5000
 
     try {
       const response = await axios.post('/signup', { username, password, email, phone });
       console.log(response.data); // Handle success response
+
+      // Update state to show success message and clear form fields
+      setSuccessMessage('Sign up successful!');
+
+      // Clear form fields after successful sign-up
+      setUsername('');
+      setPassword('');
+      setEmail('');
+      setPhone('');
+
     } catch (error) {
       console.error('Error signing up:', error); // Handle error
+      setError('Failed to sign up. Please try again later.'); // Generic error message
     }
   };
 
@@ -25,6 +38,14 @@ function SignUp() {
       <div className='w-96 p-6 shadow-lg bg-white rounded-md'>
         <h1 className='text-3xl block text-center'>Sign Up</h1>
         <hr className='mt-3' />
+
+        {/* Display error message if sign up fails */}
+        {error && <p className='text-red-500 text-sm text-center'>{error}</p>}
+
+        {/* Display success message if sign up succeeds */}
+        {successMessage && (
+          <div className='text-green-500 text-sm text-center mb-3'>{successMessage}</div>
+        )}
 
         <div className='mt-3'>
           <label htmlFor="username" className='block text-base mb-2'>Username</label>
@@ -82,6 +103,13 @@ function SignUp() {
             Sign Up
           </button>
         </div>
+
+        {/* Render Sign In button only when sign up is successful */}
+        {successMessage && (
+          <div className='mt-3 text-center'>
+            <Link to="/login" className='border-2 p-2 rounded-xl border-blue-400'>Sign In</Link>
+          </div>
+        )}
       </div>
     </div>
   );
