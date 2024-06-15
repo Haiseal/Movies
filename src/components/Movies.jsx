@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 
 function Movies() {
@@ -42,6 +43,7 @@ function Movies() {
             <tr key={movie.id} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
               <td className="border border-gray-200 px-4 py-2">{movie.id}</td>
               <td className="border border-gray-200 px-4 py-2 flex items-center">
+
                 <div className="w-12 h-16 bg-gray-200 mr-4">
                   {movie.image ? (
                     <img

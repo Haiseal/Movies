@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import axios from 'axios';
+
 
 const AddGenersForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -16,24 +18,24 @@ const AddGenersForm = ({ onSubmit }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Make POST request to backend API to add new genre
-      const response = await axios.post('http://localhost:5000/api/genres', formData);
-      console.log('Genre added successfully:', response.data);
-      // Call onSubmit prop function to handle further actions (e.g., updating state)
-      onSubmit(formData);
-      // Clear form data after successful submission
-      setFormData({
-        title: '',
-        description: '',
-        status: ''
-      });
-    } catch (error) {
-      console.error('Error adding genre:', error);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    // Make POST request to backend API to add new genre
+    const response = await axios.post('http://localhost:5000/api/genres', formData);
+    console.log('Genre added successfully:', response.data);
+    // Call onSubmit prop function to handle further actions (e.g., updating state)
+    onSubmit(formData);
+    // Clear form data after successful submission
+    setFormData({
+      title: '',
+      description: '',
+      status: ''
+    });
+  } catch (error) {
+    console.error('Error adding genre:', error);
+  }
+};
 
   return (
     <div className="p-4">
