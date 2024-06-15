@@ -1,5 +1,3 @@
-// userRoutes.js
-
 const express = require('express');
 const userHandler = require('../handlers/userHandler');
 const userRouter = express.Router();
@@ -9,5 +7,14 @@ userRouter.post('/signup', userHandler.registerUser);
 
 // Route to login a user
 userRouter.post('/login', userHandler.loginUser);
+
+// Route to check if a user is logged in
+userRouter.get('/checkLoggedIn', userHandler.checkLoggedIn);
+
+// Route to logout a user
+userRouter.get('/logout', userHandler.logoutUser);
+
+// Route to check if a user is an admin
+userRouter.get('/checkAdmin', userHandler.checkAdmin);
 
 module.exports = userRouter;

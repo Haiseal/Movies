@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+
+import { Link } from 'react-router-dom';
+
 function Movies() {
   const [movies, setMovies] = useState([]);
 
@@ -18,10 +20,13 @@ function Movies() {
       });
   }, []);
 
+  // Placeholder image URL or component
+  const placeholderImage = 'https://via.placeholder.com/60x80?text=Loading';
+
   return (
     <div className="mt-12">
       <div className="mb-8 font-bold text-2xl text-center">
-        Trending Movies
+        All Movies
       </div>
 
       <table className="w-full border-collapse border border-gray-200">
@@ -38,10 +43,25 @@ function Movies() {
             <tr key={movie.id} className={index % 2 === 0 ? 'bg-gray-100' : ''}>
               <td className="border border-gray-200 px-4 py-2">{index + 1}</td>
               <td className="border border-gray-200 px-4 py-2 flex items-center">
-                <div className="w-12 h-16 bg-gray-200 mr-4"></div> {/* Placeholder image */}
-                <div>{movie.titla_movive}</div>
-                <Link to="/detail"></Link>
-                {/* đây ông sửa lại để đến detail nha */}
+
+                <div className="w-12 h-16 bg-gray-200 mr-4">
+                  {movie.image ? (
+                    <img
+                      src={movie.image}
+                      alt={movie.titla_movive}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src={placeholderImage}
+                      alt="Placeholder"
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+                <div>
+                  <Link to={`/watchPage/${movie.id}`} className="text-blue-500 hover:underline">{movie.titla_movive}</Link>
+                </div>
               </td>
               <td className="border border-gray-200 px-4 py-2">{movie.year}</td>
               <td className="border border-gray-200 px-4 py-2">{movie.list_episodes}</td>
