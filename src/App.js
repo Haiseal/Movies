@@ -8,6 +8,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import AddAdmin from './components/AddAdmin';
 import AdminPage from './components/AdminPage';
+
 import MoviesGenre from './components/MoviesGenre';
 import AdminSidebar from './components/admin/AdminSdebar';
 import { AuthProvider, useAuth } from './components/contexts/AuthContext';
@@ -29,12 +30,14 @@ function PrivateRoute({ adminOnly = false }) {
     return <Outlet />;
 }
 
+
 function App() {
 
   const { loggedIn, logout } = useAuth(); // Use context for login status
 
   return (
     <Router>
+
       <AuthProvider>
         <div>
           <NavBar />
@@ -60,6 +63,7 @@ function App() {
           </Routes>
         </div>
       </AuthProvider>
+
     </Router>
   );
 }
