@@ -14,10 +14,10 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true })); // Allow 
 
 // Session middleware configuration
 app.use(session({
-  secret: 'your-secret-key', // Replace with a secure random string for session encryption
+  secret: 'your-secret-key', 
   resave: false,
   saveUninitialized: false,
-  // Additional configuration options as needed
+
 }));
 
 // Routes
@@ -28,7 +28,7 @@ app.use('/api', genreRoutes);
 app.use('/api', searchRoutes);
 
 // Start server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

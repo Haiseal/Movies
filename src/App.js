@@ -29,14 +29,12 @@ function PrivateRoute({ adminOnly = false }) {
     return <Outlet />;
 }
 
-
 function App() {
 
   const { loggedIn, logout } = useAuth(); // Use context for login status
 
   return (
     <Router>
-
       <AuthProvider>
         <div>
           <NavBar />
@@ -62,7 +60,6 @@ function App() {
           </Routes>
         </div>
       </AuthProvider>
-
     </Router>
   );
 }

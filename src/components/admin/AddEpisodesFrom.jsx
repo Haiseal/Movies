@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import axios from 'axios';
-
 
 const AddEpisodesForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -19,27 +17,25 @@ const AddEpisodesForm = ({ onSubmit }) => {
     });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    // Make POST request to backend API to add new episode
-    const response = await axios.post('http://localhost:5000/api/episodes', formData);
-    console.log('Episode added successfully:', response.data);
-    // Call onSubmit prop function to handle further actions (e.g., updating state)
-    onSubmit(formData);
-    // Clear form data after successful submission
-    setFormData({
-      id_episode: '',
-      linkphim: '',
-      episode: '',
-      movie_id: ''
-    });
-  } catch (error) {
-    console.error('Error adding episode:', error);
-    // Handle error case, for example, show an error message to the user
-  }
-};
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Make POST request to backend API to add new episode
+      const response = await axios.post('http://localhost:5000/api/episodes', formData);
+      console.log('Episode added successfully:', response.data);
+      // Call onSubmit prop function to handle further actions (e.g., updating state)
+      onSubmit(formData);
+      // Clear form data after successful submission
+      setFormData({
+        id_episode: '',
+        linkphim: '',
+        episode: '',
+        movie_id: ''
+      });
+    } catch (error) {
+      console.error('Error adding episode:', error);
+    }
+  };
 
   return (
     <div className="p-4">
@@ -89,9 +85,7 @@ const handleSubmit = async (e) => {
             placeholder="Enter movie ID"
           />
         </div>
-
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl" type="submit">Add Episode</button>
-
       </form>
     </div>
   );
